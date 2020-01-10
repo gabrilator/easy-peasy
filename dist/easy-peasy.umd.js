@@ -977,7 +977,9 @@
     }),
     (e.persist = function(e, t) {
       var n;
-      return K({}, e, (((n = {})[Y] = t), n));
+      return 'undefined' == typeof window
+        ? e
+        : K({}, e, (((n = {})[Y] = t), n));
     }),
     (e.reducer = function(e) {
       return (e[Z] = {}), e;

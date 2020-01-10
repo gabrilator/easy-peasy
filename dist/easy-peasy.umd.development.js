@@ -264,11 +264,17 @@
   var persist = function persist(model, config) {
     var _extends2;
 
-    return _extends(
-      {},
-      model,
-      ((_extends2 = {}), (_extends2[persistSymbol] = config), _extends2),
-    );
+    // return {
+    //   ...model,
+    //   [persistSymbol]: config,
+    // };
+    return typeof window === 'undefined'
+      ? model
+      : _extends(
+          {},
+          model,
+          ((_extends2 = {}), (_extends2[persistSymbol] = config), _extends2),
+        );
   };
   var thunkOn = function thunkOn(targetResolver, fn) {
     fn[thunkOnSymbol] = {

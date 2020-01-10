@@ -47,10 +47,16 @@ export const computed = (fnOrStateResolvers, fn) => {
 };
 
 export const persist = (model, config) => {
-  return {
-    ...model,
-    [persistSymbol]: config,
-  };
+  // return {
+  //   ...model,
+  //   [persistSymbol]: config,
+  // };
+  return typeof window === 'undefined'
+    ? model
+    : {
+        ...model,
+        [persistSymbol]: config,
+      };
 };
 
 export const thunkOn = (targetResolver, fn) => {
